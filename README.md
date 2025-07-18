@@ -171,16 +171,14 @@ npm start
 
 ## Example User Flow
 
-1. User selects “Houston Rockets”
-2. UI displays current roster + salary cap remaining
-3. User browses free agents, proposes offer for player X at $14M/year
-4. User proposes trade with another team (choose from player selector and team selector)
-5. System validates moves (league trade and salary cap rules) and warns if unrealistic
-6. User confirms — system simulates next season:
-
-Displays predicted wins/losses
-Shows full predicted stats table for top 9 players
-Shows user-adjusted roster visually
+![1. User selects “Houston Rockets”](screenshots/select_team.jpeg)
+![2. UI displays current roster + salary cap remaining](screenshots/moves_UI.jpeg)
+![3. User browses free agents](screenshots/fa_list.png) 
+![4. proposes offer (e.g. Dorian Finney-Smith at $13.1M)](screenshots/fa_signing.png)
+![5. User proposes trade with another team (choose from player selector and team selector)](screenshots/select_trade.png)
+![Confirm Trade](screenshots/trade.png)
+![5. System validates moves (league trade and salary cap rules) and warns if unrealistic](screenshots/current_moves.png)
+![6. User confirms — system simulates next season:](screenshots/simulation.png)
 
 ---
 

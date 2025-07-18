@@ -98,8 +98,8 @@ export default function App() {
           </a>
         </div>
         <div>
-          Github Repo: <a href="hhttps://github.com/junb29/NBA-GM-Assistant.git" target="_blank" rel="noopener noreferrer">
-            https://github.com/junb29/NBA-GM-Assistant.git
+          Github Repo: <a href="https://github.com/junb29/basketball-gm-simulation.git" target="_blank" rel="noopener noreferrer">
+            https://github.com/junb29/basketball-gm-simulation.git
           </a>
         </div>
       </footer>

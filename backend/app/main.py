@@ -40,7 +40,7 @@ class TeamSelect(BaseModel):
 class FAMove(BaseModel):
     my_team : str
     player: str
-    salary: int
+    salary: float
 
 class TradeMove(BaseModel):
     my_team: str
