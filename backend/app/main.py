@@ -1,8 +1,10 @@
 from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from starlette.middleware.cors import CORSMiddleware
 from .routes import router
 from pydantic import BaseModel
-from typing import List, Union
+from typing import List
 import pandas as pd
 import os
 from src.simulate_team_with_offseason_moves import (
@@ -137,3 +139,11 @@ def simulate(request: SimulateRequest):
         "losses": 82 - round(wins),
         "top_players": players.to_dict(orient="records")
     }
+
+
+
+# Deploy FastAPI + React
+
+REACT_BUILD_DIR = os.path.join(os.path.dirname(__file__), "../../frontend/build")
+
+app.mount("/static", StaticFiles(directory=os.path.join(REACT_BUILD_DIR, "static")), name="static")
