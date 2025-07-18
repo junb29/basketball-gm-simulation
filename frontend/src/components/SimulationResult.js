@@ -16,8 +16,11 @@ export default function SimulationResult({ team, sessionId, onSimulateAgain, onS
       }
     };
 
-    fetchSimulation();
-  }, [team]);
+    if (sessionId) {
+      fetchSimulation();
+    }
+  }, [team, sessionId]);
+
 
   if (!result) {
     return <div>Loading simulation...</div>;
