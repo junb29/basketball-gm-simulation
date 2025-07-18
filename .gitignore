@@ -2,10 +2,14 @@ data/*
 !data/fa_player.csv
 !data/player_stats_2024-25_cleaned.csv
 !data/player_stats_2024-25_with_salaries.csv
+!data/player_stats_2020-21_cleaned.csv
+!data/player_stats_2021-22_cleaned.csv
+!data/player_stats_2022-23_cleaned.csv
+!data/player_stats_2023-24_cleaned.csv
 
 models/win_predictor_baseline_benchmark.pkl
 models/win_predictor_baseline_simulation.pkl
-models/win_predictor_mlp_benchmark.pkl
+models/win_predictor_mlp_benchmark.pt
 venv/
 __pycache__/
 frontend/build/

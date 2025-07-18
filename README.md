@@ -109,7 +109,8 @@ basketball-gm-simulation/
 ├── data/ # NBA API data
 │   ├── player_stats_2024-25_cleaned.csv
 │   ├── player_stats_2024-25_with_salaries.csv
-│   └── fa_player.csv
+│   ├── fa_player.csv
+│   └── ...
 ├── src/  # Python files 
 │   ├── simulate_team_with_offseason_moves.py
 │   ├── predict_player_next_season_stats.py
