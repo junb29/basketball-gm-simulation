@@ -171,14 +171,22 @@ npm start
 
 ## Example User Flow
 
-![1. User selects “Houston Rockets”](screenshots/select_team.jpeg)
-![2. UI displays current roster + salary cap remaining](screenshots/moves_UI.jpeg)
-![3. User browses free agents](screenshots/fa_list.png) 
-![4. proposes offer (e.g. Dorian Finney-Smith at $13.1M)](screenshots/fa_signing.png)
-![5. User proposes trade with another team (choose from player selector and team selector)](screenshots/select_trade.png)
-![Confirm Trade](screenshots/trade.png)
-![5. System validates moves (league trade and salary cap rules) and warns if unrealistic](screenshots/current_moves.png)
-![6. User confirms — system simulates next season:](screenshots/simulation.png)
+1. User selects “Houston Rockets”
+![select_team](screenshots/select_team.jpeg)
+2. UI displays current roster + salary cap remaining
+![moves_UI](screenshots/moves_UI.jpeg)
+3. User browses free agents
+![fa_list](screenshots/fa_list.png) 
+4. proposes offer (e.g. Dorian Finney-Smith at $13.1M)
+![fa_signing](screenshots/fa_signing.png)
+5. User proposes trade with another team (choose from player selector and team selector)
+![select_trade](screenshots/select_trade.png)
+6. Confirm (add) trade
+![Trade](screenshots/trade.png)
+7. System validates moves (league trade and salary cap rules) and warns if unrealistic
+![current_moves](screenshots/current_moves.png)
+8. User confirms — system simulates next season:
+![simulation](screenshots/simulation.png)
 
 ---
 
