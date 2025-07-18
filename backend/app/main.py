@@ -77,15 +77,18 @@ class FAMove(BaseModel):
     my_team : str
     player: str
     salary: float
+    session_id: str
 
 class TradeMove(BaseModel):
     my_team: str
     trade_partner: str
     players_out: List[str]
     players_in: List[str]
+    session_id: str
     
 class SimulateRequest(BaseModel):
     team: str
+    session_id: str
 
 @app.post("/get_team_info")
 def get_team_info(req: TeamSelect):
@@ -116,9 +119,9 @@ def get_team_info(req: TeamSelect):
     }
 
 @app.post("/sign_fa")
-def sign_fa(move: FAMove, session_id: str):
+def sign_fa(move: FAMove):
     
-    state = session_state.get(session_id)
+    state = session_state.get(move.session_id)
     if state is None:
         return {"error": "Invalid session_id"}
     
@@ -135,9 +138,9 @@ def sign_fa(move: FAMove, session_id: str):
     return {"status": "signed", "salary": salary, "roster": roster, "fa_list" : session_fa_list, "messages": messages}
 
 @app.post("/trade")
-def trade(move: TradeMove, session_id: str):
+def trade(move: TradeMove):
     
-    state = session_state.get(session_id)
+    state = session_state.get(move.session_id)
     if state is None:
         return {"error": "Invalid session_id"}
 
@@ -189,9 +192,9 @@ def get_team_roster(team: str, session_id: str):
 
 
 @app.post("/simulate")
-def simulate(request: SimulateRequest, session_id: str):
+def simulate(request: SimulateRequest):
     
-    state = session_state.get(session_id)
+    state = session_state.get(request.session_id)
     if state is None:
         return {"error": "Invalid session_id"}
     
