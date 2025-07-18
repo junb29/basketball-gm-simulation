@@ -103,13 +103,13 @@ basketball-gm-simulation/
 │   │   ├── components/
 │   │   ├── api.js
 │   │   └── App.js
-├── models/ # Save Pytorch / Regressor models , gitmanually create this directory
+├── models/ # Save Pytorch / Regressor models
 │   ├── aging/
-│   ├── win_predictor_baseline_benchmark.pkl
-│   ├── win_predictor_baseline_simulation.pkl
-│   ├── win_predictor_mlp_benchmark.pkl # with +/-
 │   ├── win_predictor_mlp_simulation.pkl # without +/-
-├── data/ # NBA API data will go here, manually create this directory
+├── data/ # NBA API data
+│   ├── player_stats_2024-25_cleaned.csv
+│   ├── player_stats_2024-25_with_salaries.csv
+│   └── fa_player.csv
 ├── src/  # Python files 
 │   ├── simulate_team_with_offseason_moves.py
 │   ├── predict_player_next_season_stats.py

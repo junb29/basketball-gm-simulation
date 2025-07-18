@@ -1,4 +1,8 @@
-data/
+data/*
+!data/fa_player.csv
+!data/player_stats_2024-25_cleaned.csv
+!data/player_stats_2024-25_with_salaries.csv
+
 models/win_predictor_baseline_benchmark.pkl
 models/win_predictor_baseline_simulation.pkl
 models/win_predictor_mlp_benchmark.pkl
