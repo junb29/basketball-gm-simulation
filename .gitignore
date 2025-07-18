@@ -1,5 +1,7 @@
 data/
-models/
+models/win_predictor_baseline_benchmark.pkl
+models/win_predictor_baseline_simulation.pkl
+models/win_predictor_mlp_benchmark.pkl
 venv/
 __pycache__/
 frontend/build/
