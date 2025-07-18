@@ -147,3 +147,8 @@ def simulate(request: SimulateRequest):
 REACT_BUILD_DIR = os.path.join(os.path.dirname(__file__), "../../frontend/build")
 
 app.mount("/static", StaticFiles(directory=os.path.join(REACT_BUILD_DIR, "static")), name="static")
+
+@app.get("/")
+def serve_react_app():
+    index_path = os.path.join(REACT_BUILD_DIR, "index.html")
+    return FileResponse(index_path)
