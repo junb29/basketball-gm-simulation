@@ -53,24 +53,24 @@ def process_fa_signing(team_roster, player_name, offer_salary, df):
         # Bird rights: re-sign freely
         team_roster.add_player(player_row, salary=offer_salary)
         msg1 = f"Signed {player_name} (re-sign) at ${offer_salary}M"
-        print(msg1)
+        #print(msg1)
         messages.append(msg1)
         
         if(player_row['SALARY'] > offer_salary * 2):
             msg2 = f"Wow! That's a lot of paycut for {player_name}"
-            print(msg2)
+            #print(msg2)
             messages.append(msg2)
         
     else:
         if current_salary < SALARY_CAP and current_salary + offer_salary <= SECOND_APRON:
             team_roster.add_player(player_row, salary=offer_salary)
             msg3 = f"Signed {player_name} as FA at ${offer_salary}M"
-            print(msg3)
+            #print(msg3)
             messages.append(msg3)
         
         else:
             msg4 = f"Cannot sign {player_name}: salary cap will be over second apron."
-            print(msg4)
+            #print(msg4)
             messages.append(msg4)
             
     return messages
@@ -93,7 +93,7 @@ def process_trade(team_roster, players_out, players_in, partner_abbr, df):
     user_max_incoming = out_salary * (2 if user_salary < SALARY_CAP else 1.25)
     if in_salary > user_max_incoming:
         msg1 = f"Invalid trade: incoming salary too high for {team_roster.team_abbr}."
-        print(msg1)
+        #print(msg1)
         messages.append(msg1)
         return messages
 
@@ -106,7 +106,7 @@ def process_trade(team_roster, players_out, players_in, partner_abbr, df):
     partner_max_incoming = partner_out * (2 if partner_salary < SALARY_CAP else 1.25)
     if partner_in > partner_max_incoming:
         msg2 = f"Invalid trade for {partner_abbr}: incoming salary too high."
-        print(msg2)
+        #print(msg2)
         messages.append(msg2)
         return messages
 
@@ -115,7 +115,7 @@ def process_trade(team_roster, players_out, players_in, partner_abbr, df):
     in_ppg = incoming.apply(lambda r: r['PTS']/r['GP'] if r['GP'] > 0 else 0, axis=1).sum()
     if abs(out_ppg - in_ppg) > 10:
         msg3 = f"\nLooks like this trade might be unrealistic in real life"
-        print(msg3)
+        #print(msg3)
         messages.append(msg3)
 
     # Apply trade
@@ -125,7 +125,7 @@ def process_trade(team_roster, players_out, players_in, partner_abbr, df):
         team_roster.add_player(row)
         
     msg4 = f"\nTrade completed with {partner_abbr}."  
-    print(msg4)
+    #print(msg4)
     messages.append(msg4)
     
     return messages
@@ -191,10 +191,12 @@ def simulate_next_season(team_roster):
     with torch.no_grad():
         predicted_wins = mlp_model(X_tensor).item()
 
+    '''
     print(f"\nPredicted Wins: {int(predicted_wins)}\tPredicted Losses: {82-int(predicted_wins)}")
     print("\nTop 9 Predicted Players:")
     with pd.option_context('display.max_columns', None):
         print(top_players[['PLAYER_NAME', 'PTS', 'REB', 'AST', 'MIN', 'GP', 'AGE', 'SALARY']])
+    '''
 
     return predicted_wins, top_players
 
