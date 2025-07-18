@@ -40,7 +40,7 @@ export default function MovesUI({ team, onSimulate, setSessionId, sessionId }) {
                     alert('Could not initialize session for team.');
                 });
         }
-    }, [team]);
+    }, [team, setSessionId]);
 
     const handleAddFa = async () => {
         if (selectedFa && offerSalary) {
