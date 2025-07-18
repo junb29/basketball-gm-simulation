@@ -152,3 +152,7 @@ app.mount("/static", StaticFiles(directory=os.path.join(REACT_BUILD_DIR, "static
 def serve_react_app():
     index_path = os.path.join(REACT_BUILD_DIR, "index.html")
     return FileResponse(index_path)
+
+@app.get("/{path_name:path}")
+async def serve_spa(path_name: str):
+    return FileResponse(os.path.join(REACT_BUILD_DIR, "index.html"))
