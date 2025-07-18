@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const SALARY_CAP = 187.895;  // Salary cap in millions
 
-export default function MovesUI({ team, onSimulate }) {
+export default function MovesUI({ team, onSimulate, setSessionId, sessionId }) {
     const [myRoster, setMyRoster] = useState([]);
     const [faList, setFaList] = useState([]);
     const [selectedFa, setSelectedFa] = useState('');
@@ -14,7 +14,6 @@ export default function MovesUI({ team, onSimulate }) {
     const [tradeTeamRoster, setTradeTeamRoster] = useState([]);
     const [selectedMyPlayers, setSelectedMyPlayers] = useState([]);
     const [selectedTheirPlayers, setSelectedTheirPlayers] = useState([]);
-    const [sessionId, setSessionId] = useState(null);
 
     useEffect(() => {
         // Fetch FA list

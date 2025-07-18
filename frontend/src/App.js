@@ -83,7 +83,8 @@ export default function App() {
           <MovesUI
             team={team}
             onSimulate={handleSimulate}
-            setSessionId={setSessionId} 
+            setSessionId={setSessionId}
+            sessionId={sessionId} 
           />
         )}
       </div>
