@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-export default function SimulationResult({ team, onSimulateAgain, onStartOver }) {
+export default function SimulationResult({ team, sessionId, onSimulateAgain, onStartOver }) {
   const [result, setResult] = useState(null);
 
 
   useEffect(() => {
     const fetchSimulation = async () => {
       try {
-        const res = await axios.post('/simulate', { team });
+        const res = await axios.post('/simulate', { team, session_id: sessionId });
         setResult(res.data);
       } catch (err) {
         console.error('Simulation failed:', err);
@@ -84,7 +84,7 @@ export default function SimulationResult({ team, onSimulateAgain, onStartOver })
     <div style={{ marginTop: '20px' }}>
       <button onClick={async () => {
         try {
-          const res = await axios.post('/simulate', { team });
+          const res = await axios.post('/simulate', { team, session_id: sessionId });
           setResult(res.data);
         } catch (err) {
           console.error("Simulation failed:", err);

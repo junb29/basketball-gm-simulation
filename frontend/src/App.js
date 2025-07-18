@@ -6,6 +6,7 @@ import SimulationResult from './components/SimulationResult';
 export default function App() {
   const [team, setTeam] = useState('');
   const [showSimulation, setShowSimulation] = useState(false);
+  const [sessionId, setSessionId] = useState(null);
 
   const TEAM_NAME_TO_ABBR = {
     "Atlanta Hawks": "ATL",
@@ -70,16 +71,19 @@ export default function App() {
         ) : showSimulation ? (
           <SimulationResult 
             team={team}
+            sessionId={sessionId}
             onSimulateAgain={() => setShowSimulation(true)}
             onStartOver={() => {
               setShowSimulation(false);
               setTeam('');
+              setSessionId(null);  // clear sessionId on start over
             }} 
           />
         ) : (
           <MovesUI
             team={team}
             onSimulate={handleSimulate}
+            setSessionId={setSessionId} 
           />
         )}
       </div>

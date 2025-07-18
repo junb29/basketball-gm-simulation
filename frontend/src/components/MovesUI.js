@@ -14,6 +14,7 @@ export default function MovesUI({ team, onSimulate }) {
     const [tradeTeamRoster, setTradeTeamRoster] = useState([]);
     const [selectedMyPlayers, setSelectedMyPlayers] = useState([]);
     const [selectedTheirPlayers, setSelectedTheirPlayers] = useState([]);
+    const [sessionId, setSessionId] = useState(null);
 
     useEffect(() => {
         // Fetch FA list
@@ -27,10 +28,18 @@ export default function MovesUI({ team, onSimulate }) {
     }, []);
 
     useEffect(() => {
-        if (team) {
-            axios.get(`/roster/${team}`)
-                .then(res => setMyRoster(res.data))
-                .catch(err => console.error('Error fetching my roster:', err));
+        if (team) { // reset session_id and get original roster
+            axios.post('/get_team_info', { team })
+                .then(res => {
+                    setSessionId(res.data.session_id);
+                    setMyRoster(res.data.roster);
+                    setFaList(res.data.fa_list);
+                    setMoves([]);
+                })
+                .catch(err => {
+                    console.error('Error initializing session:', err);
+                    alert('Could not initialize session for team.');
+                });
         }
     }, [team]);
 
@@ -40,7 +49,8 @@ export default function MovesUI({ team, onSimulate }) {
             const res = await axios.post(`/sign_fa`, {
                 my_team: team,
                 player: selectedFa,
-                salary: offerSalary
+                salary: offerSalary,
+                session_id: sessionId
             });
 
             // Show backend messages to user
@@ -74,7 +84,7 @@ export default function MovesUI({ team, onSimulate }) {
 
     const handleSelectTradeTeam = (team) => {
         setSelectedTradeTeam(team);
-        fetch(`/roster/${team}`)
+        fetch(`/roster/${team}?session_id=${sessionId}`)
             .then(response => response.json())
             .then(data => setTradeTeamRoster(data))
             .catch(error => console.error('Error fetching team roster:', error));
@@ -92,10 +102,11 @@ export default function MovesUI({ team, onSimulate }) {
                 my_team: team,
                 trade_partner: selectedTradeTeam,
                 players_out: selectedMyPlayers,
-                players_in: selectedTheirPlayers
+                players_in: selectedTheirPlayers,
+                session_id: sessionId
             });
 
-            axios.get(`/roster/${selectedTradeTeam}`)
+            axios.get(`/roster/${selectedTradeTeam}?session_id=${sessionId}`)
                 .then(res => setTradeTeamRoster(res.data))
                 .catch(err => console.error('Error refreshing partner roster:', err));
 
@@ -128,11 +139,12 @@ export default function MovesUI({ team, onSimulate }) {
 
             // Reset backend state for user team by re-calling /get_team_info:
             const res = await axios.post('/get_team_info', { team });
+            setSessionId(res.data.session_id);
 
             // Set roster to clean state
             setMyRoster(res.data.roster);
 
-            // Refresh FA list as well (optional but recommended):
+            // Refresh FA list as well (optional):
             const faRes = await axios.get('/fa_list');
             setFaList(faRes.data);
 
