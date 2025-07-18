@@ -1,0 +1,10 @@
+unicodedata
+bs4
+nba_api
+fastapi
+uvicorn
+pydantic
+pandas
+scikit-learn
+torch
+joblib
