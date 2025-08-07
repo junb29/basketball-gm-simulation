@@ -20,7 +20,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware, 
-    allow_origins=["*"],  # adjust port as needed
+    allow_origins=["https://basketball-gm-simulation.vercel.app"],  # adjust port as needed
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

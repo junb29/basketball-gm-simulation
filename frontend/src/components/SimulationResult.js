@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
+const BACKEND_URL = 'https://basketball-gm-simulation.onrender.com';
+
 export default function SimulationResult({ team, sessionId, onSimulateAgain, onStartOver }) {
   const [result, setResult] = useState(null);
 
@@ -8,7 +10,7 @@ export default function SimulationResult({ team, sessionId, onSimulateAgain, onS
   useEffect(() => {
     const fetchSimulation = async () => {
       try {
-        const res = await axios.post('/simulate', { team, session_id: sessionId });
+        const res = await axios.post(`${BACKEND_URL}/simulate`, { team, session_id: sessionId });
         setResult(res.data);
       } catch (err) {
         console.error('Simulation failed:', err);
@@ -87,7 +89,7 @@ export default function SimulationResult({ team, sessionId, onSimulateAgain, onS
     <div style={{ marginTop: '20px' }}>
       <button onClick={async () => {
         try {
-          const res = await axios.post('/simulate', { team, session_id: sessionId });
+          const res = await axios.post(`${BACKEND_URL}/simulate`, { team, session_id: sessionId });
           setResult(res.data);
         } catch (err) {
           console.error("Simulation failed:", err);
