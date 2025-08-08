@@ -84,9 +84,8 @@ export default function MovesUI({ team, onSimulate, setSessionId, sessionId }) {
 
     const handleSelectTradeTeam = (team) => {
         setSelectedTradeTeam(team);
-        fetch(`/roster/${team}?session_id=${sessionId}`)
-            .then(response => response.json())
-            .then(data => setTradeTeamRoster(data))
+        axios.get(`${BACKEND_URL}/roster/${team}`, { params: { session_id: sessionId } })
+            .then(response => setTradeTeamRoster(response.data))
             .catch(error => console.error('Error fetching team roster:', error));
     };
 
