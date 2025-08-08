@@ -6,7 +6,7 @@
 - Propose realistic free agent signings and trades
 - Simulate the next season’s performance using custom-trained machine learning models.
 
-Try it here : https://basketball-gm-simulation.onrender.com
+Try it here : https://basketball-gm-simulation.vercel.app
 
 This project integrates a modern **React frontend**, a robust **FastAPI + Python backend**, and a suite of **PyTorch and scikit-learn models** for player aging and team win prediction, delivering an immersive simulation experience for basketball fans and aspiring GMs.
 

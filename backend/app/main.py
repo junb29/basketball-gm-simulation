@@ -1,6 +1,4 @@
 from fastapi import FastAPI
-from fastapi.staticfiles import StaticFiles
-from fastapi.responses import FileResponse
 from starlette.middleware.cors import CORSMiddleware
 from .routes import router
 from pydantic import BaseModel
@@ -68,7 +66,7 @@ TEAM_NAME_TO_ABBR = {
     "Toronto Raptors": "TOR",
     "Utah Jazz": "UTA",
     "Washington Wizards": "WAS"
-};
+}
 
 class TeamSelect(BaseModel):
     team: str
@@ -208,20 +206,3 @@ def simulate(request: SimulateRequest):
         "losses": 82 - round(wins),
         "top_players": players.to_dict(orient="records")
     }
-
-
-
-# Deploy FastAPI + React
-
-REACT_BUILD_DIR = os.path.join(os.path.dirname(__file__), "../../frontend/build")
-
-app.mount("/static", StaticFiles(directory=os.path.join(REACT_BUILD_DIR, "static")), name="static")
-
-@app.get("/")
-def serve_react_app():
-    index_path = os.path.join(REACT_BUILD_DIR, "index.html")
-    return FileResponse(index_path)
-
-@app.get("/{path_name:path}")
-async def serve_spa(path_name: str):
-    return FileResponse(os.path.join(REACT_BUILD_DIR, "index.html"))
