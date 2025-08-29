@@ -62,7 +62,10 @@ export default function App() {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        paddingTop: '40px'
+        paddingTop: '40px',
+        backgroundImage: 'url("/images/background.jpg")',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
       }}>
         <h1 style={{ marginBottom: '40px' }}>Basketball GM Assistant 🏀</h1>
 
