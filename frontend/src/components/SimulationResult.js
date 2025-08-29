@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import '../App.css';
 
 const BACKEND_URL = 'https://basketball-gm-simulation.onrender.com';
 
@@ -25,11 +26,18 @@ export default function SimulationResult({ team, sessionId, onSimulateAgain, onS
 
 
   if (!result) {
-    return <div>Loading simulation...</div>;
+    return <div style={{color: 'white'}}>Loading simulation...</div>;
   }
 
   return (
-  <div style={{ textAlign: 'center', paddingTop: '40px' }}>
+  <div style={{textAlign: 'center',
+               paddingTop: '40px',
+               backgroundColor: 'rgba(255, 255, 255, 0.1)',
+               backdropFilter: 'blur(8px)',
+               padding: '20px',
+               borderRadius: '12px',
+               color: 'white',
+               boxShadow: '0 4px 12px rgba(0,0,0,0.3)', }}>
     <h2>Simulation Results</h2>
     <p>Wins: {result.wins} / Losses: {result.losses}</p>
 

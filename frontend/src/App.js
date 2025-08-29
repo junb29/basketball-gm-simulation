@@ -1,3 +1,4 @@
+import './App.css';
 import React, { useState } from 'react';
 import TeamSelector from './components/TeamSelector';
 import MovesUI from './components/MovesUI';
@@ -67,7 +68,7 @@ export default function App() {
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}>
-        <h1 style={{ marginBottom: '40px' }}>Basketball GM Assistant 🏀</h1>
+        <h1 style={{ color: 'white', marginBottom: '40px' }}>Basketball GM Assistant</h1>
 
         {!team ? (
           <TeamSelector onConfirm={handleConfirm} />
@@ -109,7 +110,7 @@ export default function App() {
           </a>
         </div>
         <div>
-          Github Repo: <a href="https://github.com/junb29/basketball-gm-simulation.git" target="_blank" rel="noopener noreferrer">
+          Github: <a href="https://github.com/junb29/basketball-gm-simulation.git" target="_blank" rel="noopener noreferrer">
             https://github.com/junb29/basketball-gm-simulation.git
           </a>
         </div>

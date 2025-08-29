@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import '../App.css';
 
 const SALARY_CAP = 187.895;  // Salary cap in millions
 const BACKEND_URL = 'https://basketball-gm-simulation.onrender.com';
@@ -167,7 +168,7 @@ export default function MovesUI({ team, onSimulate, setSessionId, sessionId }) {
     return (
     <div style={{ display: 'flex', alignItems: 'flex-start' }}>
         {/* LEFT SIDE: all interaction UI */}
-        <div style={{ width: '60%', paddingRight: '50px' }}>
+        <div style={{ color: 'white', width: '60%', paddingRight: '50px' }}>
         <h3>Propose Free Agent Signings:</h3>
         <select value={selectedFa} onChange={e => setSelectedFa(e.target.value)}>
             <option value="">--Select FA--</option>
@@ -196,7 +197,7 @@ export default function MovesUI({ team, onSimulate, setSessionId, sessionId }) {
 
         {selectedTradeTeam && tradeTeamRoster.length > 0 && (
             <div style={{ width: '70%', marginTop: '20px' }}>
-            <h3>{selectedTradeTeam} Roster</h3>
+            <h3>style={{ color: 'white' }}{selectedTradeTeam} Roster</h3>
             <table border="1" cellPadding="5">
                 <thead>
                 <tr>
@@ -272,12 +273,17 @@ export default function MovesUI({ team, onSimulate, setSessionId, sessionId }) {
 
         {/* RIGHT SIDE: always show My Roster */}
         <div style={{
+        color: 'white',
         width: '80%',
         border: '1px solid #ccc',
         padding: '10px',
         overflowX: 'auto',
         boxSizing: 'border-box',
-        marginLeft: 'auto'
+        marginLeft: 'auto',
+        backgroundColor: 'rgba(255, 255, 255, 0.1)',
+        backdropFilter: 'blur(8px)',
+        borderRadius: '12px',
+        boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
         }}>
         <h3>My Team Roster ({team})</h3>
         <p>Salary Cap Remaining: ${salaryCapRemaining.toFixed(1)}M</p>

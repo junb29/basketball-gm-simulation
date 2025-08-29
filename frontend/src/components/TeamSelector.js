@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../App.css';
 
 const NBA_TEAMS = [
   'Atlanta Hawks', 'Boston Celtics', 'Brooklyn Nets', 'Charlotte Hornets', 'Chicago Bulls', 
@@ -20,12 +21,15 @@ export default function TeamSelector({ onConfirm }) {
 
   return (
     <div style={{
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center'
+      backgroundColor: 'rgba(255, 255, 255, 0.1)',
+      backdropFilter: 'blur(6px)',
+      padding: '30px 40px',
+      borderRadius: '16px',
+      boxShadow: '0 4px 20px rgba(0,0,0,0.3)',
+      display: 'inline-block',
     }}>
-      <h2>Select your team:</h2>
-      <div style={{ marginTop: '10px' }}>
+        <h2 style={{ color: 'white', marginBottom: '15px' }}>Select your team:</h2>
+        <div style={{ marginTop: '10px' }}>
         <select
           value={selectedTeam}
           onChange={(e) => setSelectedTeam(e.target.value)}
