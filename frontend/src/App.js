@@ -97,6 +97,9 @@ export default function App() {
         color: '#555'
       }}>
         <div>Enjoy!</div>
+        <div style={{ color: 'darkred', fontStyle: 'italic' }}>
+          Warning: Backend might take a while to load (Free Tier Render)
+        </div>
         <div>
           LinkedIn: <a href="https://www.linkedin.com/in/junbae03" target="_blank" rel="noopener noreferrer">
             www.linkedin.com/in/junbae03
