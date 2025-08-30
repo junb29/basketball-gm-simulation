@@ -32,12 +32,12 @@ export default function SimulationResult({ team, sessionId, onSimulateAgain, onS
   return (
   <div style={{textAlign: 'center',
                paddingTop: '40px',
-               backgroundColor: 'rgba(255, 255, 255, 0.1)',
+               backgroundColor: '1e1e1e',
                backdropFilter: 'blur(8px)',
                padding: '20px',
                borderRadius: '12px',
                color: 'white',
-               boxShadow: '0 4px 12px rgba(0,0,0,0.3)', }}>
+               boxShadow: '0 4px 12px rgba(0,0,0,0.4)', }}>
     <h2>Simulation Results</h2>
     <p>Wins: {result.wins} / Losses: {result.losses}</p>
 

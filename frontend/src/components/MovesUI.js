@@ -197,7 +197,7 @@ export default function MovesUI({ team, onSimulate, setSessionId, sessionId }) {
 
         {selectedTradeTeam && tradeTeamRoster.length > 0 && (
             <div style={{ width: '70%', marginTop: '20px' }}>
-            <h3>style={{ color: 'white' }}{selectedTradeTeam} Roster</h3>
+            <h3>style={selectedTradeTeam} Roster</h3>
             <table border="1" cellPadding="5">
                 <thead>
                 <tr>
@@ -276,14 +276,14 @@ export default function MovesUI({ team, onSimulate, setSessionId, sessionId }) {
         color: 'white',
         width: '80%',
         border: '1px solid #ccc',
-        padding: '10px',
+        padding: '20px',
         overflowX: 'auto',
         boxSizing: 'border-box',
         marginLeft: 'auto',
-        backgroundColor: 'rgba(255, 255, 255, 0.1)',
+        backgroundColor: '#1e1e1e',
         backdropFilter: 'blur(8px)',
         borderRadius: '12px',
-        boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
+        boxShadow: '0 4px 12px rgba(0,0,0,0.4)',
         }}>
         <h3>My Team Roster ({team})</h3>
         <p>Salary Cap Remaining: ${salaryCapRemaining.toFixed(1)}M</p>
